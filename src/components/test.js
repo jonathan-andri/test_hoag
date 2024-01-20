@@ -1,31 +1,32 @@
 import React,{useState} from "react";
 import "./Test.css";
 const Test = () => {
-    var[totalCredit, setTotalCredit] = useState(0);
-    var[totalDebit, setTotalDebit] = useState(0);
-    var [id, setId] = useState(1)
-    
+    const[totalCredit, setTotalCredit] = useState(0);
+    const[totalDebit, setTotalDebit] = useState(0);
+    const [newBudget, setNewBudget] = useState(0)
+    const[id, setId] = useState(1); 
+    const[budget, setBudget] = useState([]);
     const operation = (e) => {
-        e.target.value<0?
-        setTotalDebit(totalDebit - parseInt(e.target.value))
-        :
-        setTotalCredit(totalCredit + parseInt(e.target.value))  
+            e.target.value<0?
+            setTotalDebit(totalDebit - parseInt(e.target.value))
+            :
+            setTotalCredit(totalCredit + parseInt(e.target.value))  
+        // }
+            setNewBudget(parseInt(e.target.value))
     }
-    
-    const ip =  <div className="d-flex flex-row justify-content-between">
-                    <label className="form-control text-center">Budget {id}</label>
-                    <input className="form-control" type="number" onChange={operation}/>
-                </div>
-    
-    const[input, setInput] = useState([ip]);
-    
     const add = () => {
-        setId(id=>id+1)
-        let a = [...input];
-        a.push(ip);
-        setInput(a);
+        setId(id=>id+1);
+        let a = [...budget];
+        a.push({
+            id: id,
+            montant: newBudget
+        })
+        setBudget(a);
     }
 
+    const del = () => {
+        
+    }
     return(
         <>
             <div className="d-flex flex-column justify-content-between text-white" id="container">
@@ -36,8 +37,17 @@ const Test = () => {
                     <h4>Total Crédit: {totalCredit} Ariary</h4>
                 </div>
             </div>
-            {input}
-            <button className="btn" onClick={add}>Add</button>
+            {/* {input} */}
+            {
+                budget.map((newBudget)=>(
+                    <div key={newBudget.id} className="d-flex flex-row justify-content-between align-item-center">
+                        <label className="form-control text-center">Budget {newBudget.id}</label>
+                        <input className="form-control" type="number" onBlur={operation}/>
+                        <button id="effacer" className="btn">X</button>
+                    </div>
+                ))
+            }
+            <button className="btn" onClick={add}>Ajouter Budget</button>
         </>
     )
 }

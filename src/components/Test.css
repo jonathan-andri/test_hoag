@@ -26,6 +26,12 @@
     border-radius: 2px;
 }
 
-.btn {
-    background-color: #073953;
+#effacer{
+    margin: 0 auto;
+    padding: 2;
+    height: 30px;
+    text-align: center;
+    color: #F7676c;
+    font-weight: 800;
+    vertical-align: middle;
 }
