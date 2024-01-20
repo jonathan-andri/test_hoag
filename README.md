@@ -1,2 +1,1 @@
-Mandeha fa rehefa fenona tsikelikely ilay input izany hoe vao mipoitra ny input vaovao dia tong adia fenoina .
-Mitady ny solution zah fa sady push'eko ihany aloha ty .
+Nosoloiko tableau ana budget ilay izy satria mety kokoa amin'izay ny identification sy ny affichage ary ny maintenance
